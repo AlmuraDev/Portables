@@ -54,13 +54,4 @@ public final class WorkbenchConfiguration {
 		}
 		configLoader = (YamlConfiguration) plugin.getConfig();
 	}
-
-	public void reload() {
-		if (!new File(plugin.getDataFolder(), "config.yml").exists()) {
-			plugin.saveDefaultConfig();
-		} else {
-			plugin.reloadConfig();
-			configLoader = (YamlConfiguration) plugin.getConfig();
-		}
-	}
 }
