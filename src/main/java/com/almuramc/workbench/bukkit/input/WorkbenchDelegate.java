@@ -37,6 +37,10 @@ public class WorkbenchDelegate implements BindingExecutionDelegate {
 	@Override
 	public void keyPressed(KeyBindingEvent keyBindingEvent) {
 		SpoutPlayer player = keyBindingEvent.getPlayer();
+		if (!player.hasPermission("workbench.use")) {
+			return;
+		}
+
 		if (player.getOpenInventory().getType().equals(InventoryType.WORKBENCH)) {
 			player.closeInventory();
 			return;
