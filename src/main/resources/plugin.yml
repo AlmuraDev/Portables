@@ -1,0 +1,18 @@
+name: ${project.name}
+version: ${buildNumber}
+description: ${project.description}
+author: ${project.organization.name}
+website: ${project.organization.url}
+
+main: com.almuramc.workbench.bukkit.WorkbenchPlugin
+softdepend: [Spout]
+load: POSTWORLD
+
+commands:
+    workbench:
+        description: Manage Workbench
+        usage: /workbench [command] [arguments]
+permissions:
+    workbench.use:
+        description: Allows users to access the portable workbench.
+        default: op

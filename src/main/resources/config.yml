@@ -1,0 +1,4 @@
+general:
+  use-spout: true
+workbench:
+  hotkey: KEY_V
