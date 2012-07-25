@@ -1,4 +1,4 @@
 general:
-  use-spout: true
+  use-spoutplugin: true
 workbench:
   hotkey: KEY_V
