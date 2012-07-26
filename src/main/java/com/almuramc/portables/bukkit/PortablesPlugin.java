@@ -29,12 +29,14 @@ package com.almuramc.portables.bukkit;
 import com.almuramc.portables.bukkit.command.PortablesCommands;
 import com.almuramc.portables.bukkit.configuration.PortablesConfiguration;
 import com.almuramc.portables.bukkit.util.Dependency;
+import com.almuramc.portables.bukkit.util.SpoutSafeBindings;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PortablesPlugin extends JavaPlugin {
 	private static Dependency hooks;
 	private static PortablesConfiguration cached;
+	private static PortablesPlugin instance;
 
 	@Override
 	public void onLoad() {
@@ -45,15 +47,20 @@ public class PortablesPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		//Classloader has SpoutPlugin, Admin wants to use Spout features, and SpoutPlugin has been enabled. Overkill but trying to nail out the issue
-		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
-			hooks.registerSpoutBindings();
-		}
+		instance = this;
 		if (cached.useEconomy()) {
 			hooks.setupVaultEconomy();
 		}
 		hooks.setupVaultPermissions();
 		getCommand("portables").setExecutor(new PortablesCommands(this));
+		//Classloader has SpoutPlugin, Admin wants to use Spout features, and SpoutPlugin has been enabled. Overkill but trying to nail out the issue
+		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
+			SpoutSafeBindings.registerSpoutBindings();
+		}
+	}
+
+	public static PortablesPlugin getInstance() {
+		return instance;
 	}
 
 	public static Dependency getHooks() {
