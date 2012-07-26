@@ -56,9 +56,9 @@ public class PortablesUtil {
 		//has to pay for it
 		if (PortablesPlugin.getCached().useEconomy() && permission.has(player.getWorld(), player.getName(), "portables.enchantmenttable.cost")) {
 			if (econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getEnchantmentTableCost()).equals(EconomyResponse.ResponseType.SUCCESS)) {
-				player.sendMessage(ChatColor.GREEN + "[Portables Enchantment Table] -" + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + " .");
+				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + ".");
 			} else {
-				player.sendMessage(ChatColor.GREEN + "[Portables Enchantment Table] -" +ChatColor.RED + " Insufficent Funds to open requested item.");
+				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.RED + " Insufficient Funds to open requested item.");
 				return;
 			}
 		}
@@ -80,9 +80,9 @@ public class PortablesUtil {
 		//has to pay for it
 		if (PortablesPlugin.getCached().useEconomy() && permission.has(player.getWorld(), player.getName(), "portables.workbench.cost")) {
 			if (econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getWorkbenchCost()).equals(EconomyResponse.ResponseType.SUCCESS)) {
-				player.sendMessage(ChatColor.GREEN + "[Portables Workbench] -" + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + " .");
+				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + ".");
 			} else {
-				player.sendMessage(ChatColor.GREEN + "[Portables Workbench] -" +ChatColor.RED + " Insufficent Funds to open requested item.");
+				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.RED + " Insufficient Funds to open requested item.");
 				return;
 			}
 		}

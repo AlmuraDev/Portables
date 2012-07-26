@@ -50,6 +50,8 @@ public class PortablesPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		System.out.println(cached.useSpout());
+		System.out.println(hooks.isSpoutPluginEnabled());
 		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
 			SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
 			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
