@@ -52,12 +52,14 @@ public class PortablesPlugin extends JavaPlugin {
 	public void onEnable() {
 		System.out.println(cached.useSpout());
 		System.out.println(hooks.isSpoutPluginEnabled());
-		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
-			try {
+		try {
+			//Dynamic bindings means we need to gurrantee that SpoutPlugin is there in the classloader else logs get spammed
+			Class.forName("org.getspout.spoutapi.Spout");
+			if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
 				SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
 				SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
-			} catch (Exception ignore) {}
-		}
+			}
+		} catch (ClassNotFoundException ignore) {}
 
 		if (hooks.isVaultPluginEnabled()) {
 			if (cached.useEconomy()) {
