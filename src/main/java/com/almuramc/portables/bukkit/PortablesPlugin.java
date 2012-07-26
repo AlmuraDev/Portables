@@ -58,6 +58,7 @@ public class PortablesPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		//Classloader has SpoutPlugin, Admin wants to use Spout features, and SpoutPlugin has been enabled. Overkill but trying to nail out the issue
 		if (HASSPOUT && cached.useSpout() && hooks.isSpoutPluginEnabled()) {
 			SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
 			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);

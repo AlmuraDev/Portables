@@ -53,7 +53,7 @@ public class Dependency {
 	}
 
 	public boolean isSpoutPluginEnabled() {
-		return hasSpoutPlugin() && manager.isPluginEnabled("Spout");
+		return manager.isPluginEnabled("Spout");
 	}
 
 	public boolean isVaultPluginEnabled() {
