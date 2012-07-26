@@ -48,9 +48,7 @@ public class PortablesPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		if (cached.useEconomy()) {
-			hooks.setupVaultEconomy();
-		}
+		hooks.setupVaultEconomy();
 		hooks.setupVaultPermissions();
 		getCommand("portables").setExecutor(new PortablesCommands(this));
 		//Classloader has SpoutPlugin, Admin wants to use Spout features, and SpoutPlugin has been enabled. Overkill but trying to nail out the issue
