@@ -32,6 +32,7 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.permission.Permission;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -55,9 +56,9 @@ public class PortablesUtil {
 		//has to pay for it
 		if (PortablesPlugin.getCached().useEconomy() && permission.has(player.getWorld(), player.getName(), "portables.enchantmenttable.cost")) {
 			if (econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getEnchantmentTableCost()).equals(EconomyResponse.ResponseType.SUCCESS)) {
-				//TODO Dockter, send a pretty success message that they were charged.
+				player.sendMessage(ChatColor.GREEN + "[Portables Enchantment Table] -" + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + " .");
 			} else {
-				//TODO Dockter, send a pretty success message that they don't have enough jack.
+				player.sendMessage(ChatColor.GREEN + "[Portables Enchantment Table] -" +ChatColor.RED + " Insufficent Funds to open requested item.");
 				return;
 			}
 		}
@@ -79,9 +80,9 @@ public class PortablesUtil {
 		//has to pay for it
 		if (PortablesPlugin.getCached().useEconomy() && permission.has(player.getWorld(), player.getName(), "portables.workbench.cost")) {
 			if (econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getWorkbenchCost()).equals(EconomyResponse.ResponseType.SUCCESS)) {
-				//TODO Dockter, send a pretty success message that they were charged.
+				player.sendMessage(ChatColor.GREEN + "[Portables Workbench] -" + ChatColor.WHITE + " Account deducted: "+ PortablesPlugin.getCached().getEnchantmentTableCost() + " .");
 			} else {
-				//TODO Dockter, send a pretty success message that they don't have enough jack.
+				player.sendMessage(ChatColor.GREEN + "[Portables Workbench] -" +ChatColor.RED + " Insufficent Funds to open requested item.");
 				return;
 			}
 		}

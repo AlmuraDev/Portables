@@ -32,6 +32,7 @@ import com.almuramc.portables.bukkit.PortablesPlugin;
 import com.almuramc.portables.bukkit.util.PortablesUtil;
 import com.almuramc.portables.common.Portables;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -53,7 +54,7 @@ public class PortablesCommands implements CommandExecutor {
 			//handle reload first
 			if (strings[0].equalsIgnoreCase("reload")) {
 				PortablesPlugin.getCached().reload();
-				//TODO Dockter, do a pretty message here
+				commandSender.sendMessage(ChatColor.GREEN + "[Portables] -" + ChatColor.WHITE + " Reloaded!");
 				return true;
 			}
 			Player player = commandSender instanceof Player ? (Player) commandSender : null;
@@ -64,7 +65,7 @@ public class PortablesCommands implements CommandExecutor {
 			}
 			Portables portable = Portables.get(strings[0].toLowerCase());
 			if (portable == null) {
-				//TODO Dockter, do a pretty message here
+				commandSender.sendMessage(ChatColor.GREEN + "[Portables] -" + ChatColor.WHITE + " Please specify which Portable item to open!");
 				return true;
 			}
 			switch (portable) {
