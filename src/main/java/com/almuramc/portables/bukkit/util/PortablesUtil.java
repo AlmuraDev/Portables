@@ -90,6 +90,9 @@ public class PortablesUtil {
 
 	private static boolean hasMaterial(Material toFind, ItemStack[] contents) {
 		for (ItemStack is : contents) {
+			if (is == null) {
+				continue;
+			}
 			if (is.getType().equals(toFind)) {
 				return true;
 			}
