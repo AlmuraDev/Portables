@@ -1,4 +1,11 @@
 general:
   use-spoutplugin: true
+brewingstand:
+  cost: 0
+  hotkey: KEY_I
+furance:
+  cost: 0
+  hotkey: KEY_O
 workbench:
-  hotkey: KEY_V
+  cost: 0
+  hotkey: KEY_P

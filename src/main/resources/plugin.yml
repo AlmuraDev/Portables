@@ -4,15 +4,30 @@ description: ${project.description}
 author: ${project.organization.name}
 website: ${project.organization.url}
 
-main: com.almuramc.workbench.bukkit.WorkbenchPlugin
+main: com.almuramc.portables.bukkit.PortablesPlugin
 softdepend: [Spout]
 load: POSTWORLD
 
 commands:
     workbench:
-        description: Manage Workbench
-        usage: /workbench [command] [arguments]
+        description: Manage Portables
+        usage: /portables [command] [arguments]
 permissions:
-    workbench.use:
+    portables.brewingstand.cost:
+        description: Allows users to access the portable workbench.
+        default: op
+    portables.brewsingstand.use:
+        description: Allows users to access the portable workbench.
+        default: op
+    portables.furnace.cost:
+        description: Allows users to access the portable workbench.
+        default: op
+    portables.furnace.use:
+        description: Allows users to access the portable workbench.
+        default: op
+    portables.workbench.cost:
+        description: Allows users to access the portable workbench.
+        default: op
+    portables.workbench.use:
         description: Allows users to access the portable workbench.
         default: op

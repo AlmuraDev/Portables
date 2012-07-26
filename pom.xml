@@ -4,11 +4,11 @@
 
 	<!-- Project information -->
 	<groupId>com.almuramc</groupId>
-	<artifactId>workbench</artifactId>
+	<artifactId>portables</artifactId>
 	<version>dev-SNAPSHOT</version>
-	<name>Workbench</name>
+	<name>Portables</name>
 	<url>http://www.almuramc.com</url>
-	<description>Workbench is a plugin for Bukkit/Vanilla for Spout that provides users a handy portable workbench</description>
+	<description>Portables is a plugin for Bukkit/Vanilla for Spout that provides users handy portable utilities</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

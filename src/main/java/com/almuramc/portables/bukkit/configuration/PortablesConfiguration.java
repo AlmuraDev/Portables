@@ -1,10 +1,10 @@
 /*
- * This file is part of Workbench.
+ * This file is part of Portables.
  *
  * Copyright (c) 2012, AlmuraDev <http://www.almuramc.com/>
- * Workbench is licensed under the Almura Development License.
+ * Portables is licensed under the Almura Development License.
  *
- * Workbench is free software: you can redistribute it and/or modify
+ * Portables is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -13,7 +13,7 @@
  * are hereby licensed under the GNU Lesser Public License, as described
  * in Almura Development License.
  *
- * Workbench is distributed in the hope that it will be useful,
+ * Portables is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -24,19 +24,19 @@
  * <http://www.gnu.org/licenses/> for the GNU General Public License and
  * the GNU Lesser Public License.
  */
-package com.almuramc.workbench.bukkit.configuration;
+package com.almuramc.portables.bukkit.configuration;
 
 import java.io.File;
 
-import com.almuramc.workbench.bukkit.WorkbenchPlugin;
+import com.almuramc.portables.bukkit.PortablesPlugin;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public final class WorkbenchConfiguration {
-	private final WorkbenchPlugin plugin;
+public final class PortablesConfiguration {
+	private final PortablesPlugin plugin;
 	private YamlConfiguration configLoader;
 
-	public WorkbenchConfiguration(WorkbenchPlugin plugin) {
+	public PortablesConfiguration(PortablesPlugin plugin) {
 		this.plugin = plugin;
 	}
 

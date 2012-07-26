@@ -1,10 +1,10 @@
 /*
- * This file is part of Workbench.
+ * This file is part of Portables.
  *
  * Copyright (c) 2012, AlmuraDev <http://www.almuramc.com/>
- * Workbench is licensed under the Almura Development License.
+ * Portables is licensed under the Almura Development License.
  *
- * Workbench is free software: you can redistribute it and/or modify
+ * Portables is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -13,7 +13,7 @@
  * are hereby licensed under the GNU Lesser Public License, as described
  * in Almura Development License.
  *
- * Workbench is distributed in the hope that it will be useful,
+ * Portables is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -24,7 +24,7 @@
  * <http://www.gnu.org/licenses/> for the GNU General Public License and
  * the GNU Lesser Public License.
  */
-package com.almuramc.workbench.bukkit.input;
+package com.almuramc.portables.bukkit.input;
 
 import org.getspout.spoutapi.event.input.KeyBindingEvent;
 import org.getspout.spoutapi.gui.ScreenType;
@@ -33,7 +33,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 
 import org.bukkit.event.inventory.InventoryType;
 
-public class WorkbenchDelegate implements BindingExecutionDelegate {
+public class PortablesWorkbenchDelegate implements BindingExecutionDelegate {
 	@Override
 	public void keyPressed(KeyBindingEvent keyBindingEvent) {
 		SpoutPlayer player = keyBindingEvent.getPlayer();
