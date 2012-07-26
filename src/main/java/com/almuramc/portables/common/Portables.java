@@ -32,7 +32,8 @@ import java.util.Map;
 public enum Portables {
 	FURNACE("furance"),
 	WORKBENCH("workbench"),
-	BREWING_STAND("brewingstand");
+	BREWING_STAND("brewingstand"),
+	ENCHANTMENT_TABLE("enchantmenttable");
 	private final String identifier;
 	private static final Map<String, Portables> stringMap = new HashMap<String, Portables>();
 

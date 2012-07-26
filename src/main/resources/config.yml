@@ -1,11 +1,9 @@
 general:
   use-spoutplugin: true
-brewingstand:
+  use-economy: true
+enchantmenttable:
   cost: 0
   hotkey: KEY_I
-furance:
-  cost: 0
-  hotkey: KEY_O
 workbench:
   cost: 0
-  hotkey: KEY_P
+  hotkey: KEY_O

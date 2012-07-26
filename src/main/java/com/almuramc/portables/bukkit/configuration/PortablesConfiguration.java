@@ -41,11 +41,27 @@ public final class PortablesConfiguration {
 	}
 
 	public boolean useSpout() {
-		return configLoader.getBoolean("general.use-spout");
+		return configLoader.getBoolean("general.use-spoutplugin");
+	}
+
+	public boolean useEconomy() {
+		return configLoader.getBoolean("general.use-economy");
+	}
+
+	public double getEnchantmentTableCost() {
+		return configLoader.getDouble("enchantmenttable.cost", 0.0);
+	}
+
+	public String getEnchantmentTableHotkey() {
+		return configLoader.getString("enchantmenttable.hotkey");
 	}
 
 	public String getWorkbenchHotkey() {
 		return configLoader.getString("workbench.hotkey");
+	}
+
+	public double getWorkbenchCost() {
+		return configLoader.getDouble("workbench.cost", 0.0);
 	}
 
 	public void load() {
@@ -53,5 +69,14 @@ public final class PortablesConfiguration {
 			plugin.saveDefaultConfig();
 		}
 		configLoader = (YamlConfiguration) plugin.getConfig();
+	}
+
+	public void reload() {
+		if (!new File(plugin.getDataFolder(), "config.yml").exists()) {
+			plugin.saveDefaultConfig();
+		}
+		plugin.reloadConfig();
+		configLoader = (YamlConfiguration) plugin.getConfig();
+
 	}
 }

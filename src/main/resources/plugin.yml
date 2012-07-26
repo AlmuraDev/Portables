@@ -5,29 +5,33 @@ author: ${project.organization.name}
 website: ${project.organization.url}
 
 main: com.almuramc.portables.bukkit.PortablesPlugin
+depend: [Vault]
 softdepend: [Spout]
 load: POSTWORLD
 
 commands:
-    workbench:
+    portables:
         description: Manage Portables
         usage: /portables [command] [arguments]
 permissions:
-    portables.brewingstand.cost:
-        description: Allows users to access the portable workbench.
+    portables.reload
+        description: Allows the user to reload Portables
         default: op
-    portables.brewsingstand.use:
-        description: Allows users to access the portable workbench.
-        default: op
-    portables.furnace.cost:
-        description: Allows users to access the portable workbench.
-        default: op
-    portables.furnace.use:
-        description: Allows users to access the portable workbench.
+    portables.enchantmenttable.cost:
+        description: Will users get charged for opening the enchantment table
+        default: false
+    portables.enchantmenttable.has:
+        description: Users have to have an enchantment table in their inventory to access portable mode
+        default: false
+    portables.enchantmenttable.use:
+        description: Allows users to access the portable enchantment table.
         default: op
     portables.workbench.cost:
-        description: Allows users to access the portable workbench.
-        default: op
+        description: Will users get charged for opening the workbench
+        default: false
+    portables.workbench.has:
+        description: Users have to have a workbench in their inventory to access portable mode
+        default: false
     portables.workbench.use:
         description: Allows users to access the portable workbench.
         default: op

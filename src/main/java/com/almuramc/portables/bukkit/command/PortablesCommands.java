@@ -29,6 +29,7 @@ package com.almuramc.portables.bukkit.command;
 import java.util.logging.Level;
 
 import com.almuramc.portables.bukkit.PortablesPlugin;
+import com.almuramc.portables.bukkit.util.PortablesUtil;
 import com.almuramc.portables.common.Portables;
 
 import org.bukkit.command.Command;
@@ -48,38 +49,34 @@ public class PortablesCommands implements CommandExecutor {
 		if (command.getName().equalsIgnoreCase("portables")) {
 			if (strings.length == 0) {
 				return false;
-			} else if (!(commandSender instanceof Player)) {
-				plugin.getLogger().log(Level.SEVERE, "Must be in-game to use portables' commands!");
+			}
+			//handle reload first
+			if (strings[0].equalsIgnoreCase("reload")) {
+				PortablesPlugin.getCached().reload();
+				//TODO Dockter, do a pretty message here
 				return true;
 			}
-			Player player = (Player) commandSender;
-			Portables portable = Portables.valueOf(strings[0]);
+			Player player = commandSender instanceof Player ? (Player) commandSender : null;
+			//Gotta be a player to open a portable
+			if (player == null) {
+				plugin.getLogger().log(Level.SEVERE, "Must be in-game to open a portable!");
+				return true;
+			}
+			Portables portable = Portables.get(strings[0].toLowerCase());
 			switch (portable) {
 				case BREWING_STAND:
-					return openBrewingStand(player);
+					break;
+				case ENCHANTMENT_TABLE:
+					PortablesUtil.openEnchantmentTable(player);
+					break;
 				case FURNACE:
-					return openFurnace(player);
+					break;
 				case WORKBENCH:
-					return openWorkbench(player);
+					PortablesUtil.openWorkbench(player);
+					break;
 				default:
 					break;
 			}
-		}
-		return false;
-	}
-
-	//TODO Cost and window opening
-	private boolean openBrewingStand(Player player) {
-		return false;
-	}
-
-	private boolean openFurnace(Player player) {
-		return false;
-	}
-
-	private boolean openWorkbench(Player player) {
-		if (player.hasPermission("workbench.use")) {
-			player.openWorkbench(null, true);
 			return true;
 		}
 		return false;

@@ -28,7 +28,9 @@ package com.almuramc.portables.bukkit;
 
 import com.almuramc.portables.bukkit.command.PortablesCommands;
 import com.almuramc.portables.bukkit.configuration.PortablesConfiguration;
+import com.almuramc.portables.bukkit.input.PortablesEnchantmentTableDelegate;
 import com.almuramc.portables.bukkit.input.PortablesWorkbenchDelegate;
+import com.almuramc.portables.bukkit.util.Dependency;
 
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.keyboard.Keyboard;
@@ -36,19 +38,39 @@ import org.getspout.spoutapi.keyboard.Keyboard;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PortablesPlugin extends JavaPlugin {
-	private PortablesConfiguration cached;
+	private static PortablesPlugin instance;
+	private static Dependency hooks;
+	private static PortablesConfiguration cached;
 
 	@Override
 	public void onLoad() {
 		cached = new PortablesConfiguration(this);
 		cached.load();
-		if (cached.useSpout() && getServer().getPluginManager().getPlugin("Spout") != null) {
-			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
-		}
+		hooks = new Dependency(this);
 	}
 
 	@Override
 	public void onEnable() {
+		instance = this;
+		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
+			SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
+			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
+		}
+
+		if (hooks.isVaultPluginEnabled()) {
+			if (cached.useEconomy()) {
+				hooks.setupVaultEconomy();
+			}
+			hooks.setupVaultPermissions();
+		}
 		getCommand("portables").setExecutor(new PortablesCommands(this));
+	}
+
+	public static Dependency getHooks() {
+		return hooks;
+	}
+
+	public static PortablesConfiguration getCached() {
+		return cached;
 	}
 }

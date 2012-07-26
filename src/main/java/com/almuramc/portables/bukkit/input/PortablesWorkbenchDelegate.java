@@ -26,6 +26,8 @@
  */
 package com.almuramc.portables.bukkit.input;
 
+import com.almuramc.portables.bukkit.util.PortablesUtil;
+
 import org.getspout.spoutapi.event.input.KeyBindingEvent;
 import org.getspout.spoutapi.gui.ScreenType;
 import org.getspout.spoutapi.keyboard.BindingExecutionDelegate;
@@ -37,9 +39,6 @@ public class PortablesWorkbenchDelegate implements BindingExecutionDelegate {
 	@Override
 	public void keyPressed(KeyBindingEvent keyBindingEvent) {
 		SpoutPlayer player = keyBindingEvent.getPlayer();
-		if (!player.hasPermission("workbench.use")) {
-			return;
-		}
 
 		if (player.getOpenInventory().getType().equals(InventoryType.WORKBENCH)) {
 			player.closeInventory();
@@ -50,7 +49,7 @@ public class PortablesWorkbenchDelegate implements BindingExecutionDelegate {
 			return;
 		}
 
-		player.openWorkbench(null, true);
+		PortablesUtil.openWorkbench(player);
 	}
 
 	@Override
