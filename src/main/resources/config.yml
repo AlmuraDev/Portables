@@ -1,7 +1,7 @@
 general:
   use-spoutplugin: true
   use-economy: true
-enchantmenttable:
+enchant:
   cost: 0
   hotkey: KEY_I
 workbench:

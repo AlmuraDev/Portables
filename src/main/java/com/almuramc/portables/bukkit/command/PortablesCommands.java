@@ -54,7 +54,7 @@ public class PortablesCommands implements CommandExecutor {
 			//handle reload first
 			if (strings[0].equalsIgnoreCase("reload")) {
 				PortablesPlugin.getCached().reload();
-				commandSender.sendMessage(ChatColor.GREEN + "[Portables] -" + ChatColor.WHITE + " Reloaded!");
+				commandSender.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Reloaded!");
 				return true;
 			}
 			Player player = commandSender instanceof Player ? (Player) commandSender : null;
@@ -65,7 +65,7 @@ public class PortablesCommands implements CommandExecutor {
 			}
 			Portables portable = Portables.get(strings[0].toLowerCase());
 			if (portable == null) {
-				commandSender.sendMessage(ChatColor.GREEN + "[Portables] -" + ChatColor.WHITE + " Please specify which Portable item to open!");
+				commandSender.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Please specify which Portable item to open!");
 				return true;
 			}
 			switch (portable) {

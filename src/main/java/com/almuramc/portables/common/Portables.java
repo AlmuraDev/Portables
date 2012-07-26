@@ -33,7 +33,7 @@ public enum Portables {
 	FURNACE("furance"),
 	WORKBENCH("workbench"),
 	BREWING_STAND("brewingstand"),
-	ENCHANTMENT_TABLE("enchantmenttable");
+	ENCHANTMENT_TABLE("enchant");
 	private final String identifier;
 	private static final Map<String, Portables> stringMap = new HashMap<String, Portables>();
 

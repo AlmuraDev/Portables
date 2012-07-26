@@ -48,12 +48,12 @@ public final class PortablesConfiguration {
 		return configLoader.getBoolean("general.use-economy");
 	}
 
-	public double getEnchantmentTableCost() {
-		return configLoader.getDouble("enchantmenttable.cost", 0.0);
+	public double getEnchantCost() {
+		return configLoader.getDouble("enchant.cost", 0.0);
 	}
 
-	public String getEnchantmentTableHotkey() {
-		return configLoader.getString("enchantmenttable.hotkey");
+	public String getEnchantHotkey() {
+		return configLoader.getString("enchant.hotkey");
 	}
 
 	public String getWorkbenchHotkey() {

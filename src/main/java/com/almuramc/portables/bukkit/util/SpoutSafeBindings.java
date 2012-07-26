@@ -39,7 +39,7 @@ import org.getspout.spoutapi.keyboard.Keyboard;
 public class SpoutSafeBindings {
 	public static void registerSpoutBindings() {
 		PortablesPlugin.getInstance().getLogger().info("Successfully hooked into SpoutPlugin for keybindings");
-		SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(PortablesPlugin.getCached().getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), PortablesPlugin.getInstance());
+		SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(PortablesPlugin.getCached().getEnchantHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), PortablesPlugin.getInstance());
 		SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(PortablesPlugin.getCached().getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), PortablesPlugin.getInstance());
 	}
 }

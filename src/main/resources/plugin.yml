@@ -17,13 +17,13 @@ permissions:
     portables.reload:
         description: Allows the user to reload Portables
         default: op
-    portables.enchantmenttable.cost:
+    portables.enchant.cost:
         description: Will users get charged for opening the enchantment table
         default: false
-    portables.enchantmenttable.has:
+    portables.enchant.has:
         description: Users have to have an enchantment table in their inventory to access portable mode
         default: false
-    portables.enchantmenttable.use:
+    portables.enchant.use:
         description: Allows users to access the portable enchantment table.
         default: op
     portables.workbench.cost:
