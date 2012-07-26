@@ -63,6 +63,10 @@ public class PortablesCommands implements CommandExecutor {
 				return true;
 			}
 			Portables portable = Portables.get(strings[0].toLowerCase());
+			if (portable == null) {
+				//TODO Dockter, do a pretty message here
+				return true;
+			}
 			switch (portable) {
 				case BREWING_STAND:
 					break;
