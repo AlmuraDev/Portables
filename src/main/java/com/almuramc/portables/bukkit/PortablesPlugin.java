@@ -35,11 +35,19 @@ import com.almuramc.portables.bukkit.util.Dependency;
 import org.getspout.spoutapi.SpoutManager;
 import org.getspout.spoutapi.keyboard.Keyboard;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PortablesPlugin extends JavaPlugin {
 	private static Dependency hooks;
 	private static PortablesConfiguration cached;
+	private static boolean HASSPOUT = false;
+
+	static {
+		if (Bukkit.getServer().getPluginManager().getPlugin("Spout") != null) {
+			HASSPOUT = true;
+		}
+	}
 
 	@Override
 	public void onLoad() {
@@ -50,17 +58,10 @@ public class PortablesPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		System.out.println(cached.useSpout());
-		System.out.println(hooks.isSpoutPluginEnabled());
-		try {
-			//Dynamic bindings means we need to gurrantee that SpoutPlugin is there in the classloader else logs get spammed
-			Class.forName("org.getspout.spoutapi.Spout");
-			if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
-				SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
-				SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
-			}
-		} catch (ClassNotFoundException ignore) {}
-
+		if (HASSPOUT && cached.useSpout() && hooks.isSpoutPluginEnabled()) {
+			SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
+			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
+		}
 		if (hooks.isVaultPluginEnabled()) {
 			if (cached.useEconomy()) {
 				hooks.setupVaultEconomy();
