@@ -28,26 +28,13 @@ package com.almuramc.portables.bukkit;
 
 import com.almuramc.portables.bukkit.command.PortablesCommands;
 import com.almuramc.portables.bukkit.configuration.PortablesConfiguration;
-import com.almuramc.portables.bukkit.input.PortablesEnchantmentTableDelegate;
-import com.almuramc.portables.bukkit.input.PortablesWorkbenchDelegate;
 import com.almuramc.portables.bukkit.util.Dependency;
 
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.keyboard.Keyboard;
-
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PortablesPlugin extends JavaPlugin {
 	private static Dependency hooks;
 	private static PortablesConfiguration cached;
-	private static boolean HASSPOUT = false;
-
-	static {
-		if (Bukkit.getServer().getPluginManager().getPlugin("Spout") != null) {
-			HASSPOUT = true;
-		}
-	}
 
 	@Override
 	public void onLoad() {
@@ -59,16 +46,13 @@ public class PortablesPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		//Classloader has SpoutPlugin, Admin wants to use Spout features, and SpoutPlugin has been enabled. Overkill but trying to nail out the issue
-		if (HASSPOUT && cached.useSpout() && hooks.isSpoutPluginEnabled()) {
-			SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(cached.getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), this);
-			SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(cached.getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), this);
+		if (cached.useSpout() && hooks.isSpoutPluginEnabled()) {
+			hooks.registerSpoutBindings();
 		}
-		if (hooks.isVaultPluginEnabled()) {
-			if (cached.useEconomy()) {
-				hooks.setupVaultEconomy();
-			}
-			hooks.setupVaultPermissions();
+		if (cached.useEconomy()) {
+			hooks.setupVaultEconomy();
 		}
+		hooks.setupVaultPermissions();
 		getCommand("portables").setExecutor(new PortablesCommands(this));
 	}
 

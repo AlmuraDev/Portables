@@ -26,8 +26,14 @@
  */
 package com.almuramc.portables.bukkit.util;
 
+import com.almuramc.portables.bukkit.PortablesPlugin;
+import com.almuramc.portables.bukkit.input.PortablesEnchantmentTableDelegate;
+import com.almuramc.portables.bukkit.input.PortablesWorkbenchDelegate;
+
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
+import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.keyboard.Keyboard;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -94,5 +100,10 @@ public class Dependency {
 			permHook = rsp.getProvider();
 			plugin.getLogger().info("Successfully hooked into Vault for permissions");
 		}
+	}
+
+	public void registerSpoutBindings() {
+		SpoutManager.getKeyBindingManager().registerBinding("Enchantment Table", Keyboard.valueOf(PortablesPlugin.getCached().getEnchantmentTableHotkey()), "Opens the portable enchantment table", new PortablesEnchantmentTableDelegate(), plugin);
+		SpoutManager.getKeyBindingManager().registerBinding("Workbench", Keyboard.valueOf(PortablesPlugin.getCached().getWorkbenchHotkey()), "Opens the portable workbench", new PortablesWorkbenchDelegate(), plugin);
 	}
 }
