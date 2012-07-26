@@ -77,6 +77,5 @@ public final class PortablesConfiguration {
 		}
 		plugin.reloadConfig();
 		configLoader = (YamlConfiguration) plugin.getConfig();
-
 	}
 }
