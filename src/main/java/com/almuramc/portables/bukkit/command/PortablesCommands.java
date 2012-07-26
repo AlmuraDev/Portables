@@ -28,8 +28,8 @@ package com.almuramc.portables.bukkit.command;
 
 import java.util.logging.Level;
 
-import com.almuramc.portables.common.Portables;
 import com.almuramc.portables.bukkit.PortablesPlugin;
+import com.almuramc.portables.common.Portables;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
