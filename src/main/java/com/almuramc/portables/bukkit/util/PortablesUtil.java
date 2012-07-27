@@ -28,6 +28,7 @@ package com.almuramc.portables.bukkit.util;
 
 import com.almuramc.portables.bukkit.PortablesPlugin;
 
+import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
@@ -58,8 +59,9 @@ public class PortablesUtil {
 				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.RED + " Insufficient Funds to open requested item.");
 				return;
 			}
-			econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getEnchantCost());
-			player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: " + PortablesPlugin.getCached().getEnchantCost() + ".");
+			double cost = PortablesPlugin.getCached().getEnchantCost();
+			econ.withdrawPlayer(player.getName(), cost);
+			player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: " + econ.format(cost) + ".");
 		}
 		player.openEnchanting(null, true);
 	}
@@ -82,8 +84,9 @@ public class PortablesUtil {
 				player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.RED + " Insufficient Funds to open requested item.");
 				return;
 			}
-			econ.withdrawPlayer(player.getName(), PortablesPlugin.getCached().getWorkbenchCost());
-			player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: " + PortablesPlugin.getCached().getWorkbenchCost() + ".");
+			double cost = PortablesPlugin.getCached().getWorkbenchCost();
+			econ.withdrawPlayer(player.getName(), cost);
+			player.sendMessage(ChatColor.GREEN + "[Portables] " + ChatColor.WHITE + " Account deducted: " + econ.format(cost) + ".");
 		}
 		player.openWorkbench(null, true);
 	}
