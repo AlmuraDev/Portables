@@ -57,7 +57,7 @@ public class PortablesSpoutListener implements Listener {
 			if (!(block.getState() instanceof Sign)) {
 				return;
 			}
-			if (!PortablesPlugin.getHooks().getPermissions().has(player.getWorld(), player.getName(), "portables.workbench.use")) {
+			if (!PortablesPlugin.getHooks().getPermissions().has(player.getWorld(), player.getName(), "portables.sign.use")) {
 				player.sendNotification("Portables", "Cannot edit signs!", Material.LAVA_BUCKET);
 				return;
 			}
