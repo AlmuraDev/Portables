@@ -6,7 +6,7 @@ website: ${project.organization.url}
 
 main: com.almuramc.portables.bukkit.PortablesPlugin
 depend: [Vault]
-softdepend: [Spout]
+softdepend: [Spout, Residence]
 load: POSTWORLD
 
 commands:
@@ -34,4 +34,7 @@ permissions:
         default: false
     portables.workbench.use:
         description: Allows users to access the portable workbench.
+        default: op
+    portables.sign.use:
+        description: Allows users to access the sign edit GUI of an existing sign
         default: op
