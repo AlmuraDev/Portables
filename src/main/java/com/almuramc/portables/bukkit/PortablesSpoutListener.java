@@ -69,8 +69,7 @@ public class PortablesSpoutListener implements Listener {
 					}
 				}
 			}
-			Sign sign = (Sign) block.getState();
-			player.openSignEditGUI(sign);
+			player.openSignEditGUI((Sign) block.getState());
 		}
 	}
 
