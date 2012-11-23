@@ -3,7 +3,7 @@ general:
   use-economy: true
 enchant:
   cost: 0
-  hotkey: KEY_I
+  hotkey: KEY_E
 workbench:
   cost: 0
-  hotkey: KEY_O
+  hotkey: KEY_N
