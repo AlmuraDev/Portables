@@ -88,9 +88,6 @@ public class PortablesSpoutListener implements Listener {
 
 	@EventHandler
 	public void onKeyReleased(KeyReleasedEvent event) {
-		if (event.getScreenType() != ScreenType.GAME_SCREEN) {
-			return;
-		}
 		final Keyboard key = event.getKey();
 		final UUID ident = event.getPlayer().getUniqueId();
 		switch (key) {
